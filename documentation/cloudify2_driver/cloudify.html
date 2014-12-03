@@ -125,10 +125,10 @@ $(document).ready(function () {
   <li>In the same <code>upload</code> folder, edit the <code>bootstrap-management.sh</code>:</li>
 </ol>
 
+<h4>For Unix Manager</h4>
 <ul>
   <li>Locate the ligne</li>
 </ul>
-
 <div class="highlight"><pre><code class="language-sh" data-lang="sh">./cloudify.sh <span class="nv">$START_COMMAND</span> <span class="nv">$START_COMMAND_ARGS</span></code></pre></div>
 
 <ul>
@@ -139,6 +139,22 @@ $(document).ready(function () {
 chmod +x <span class="k">${</span><span class="nv">WORKING_HOME_DIRECTORY</span><span class="k">}</span>/events/bin/gsDeployEventsWar.sh
 <span class="k">${</span><span class="nv">WORKING_HOME_DIRECTORY</span><span class="k">}</span>/events/bin/gsDeployEventsWar.sh
 <span class="k">fi</span></code></pre></div>
+
+<h4>For Windows Manager</h4>
+<ul>
+  <li>Locate the ligne</li>
+</ul>
+<div class="highlight"><pre>
+  <code class="language-sh" data-lang="sh"> <span class="nv">$cloudifyCommand</span> = "cmd.exe /c <span class="nv">$cloudifyDir</span>\tools\cli\cloudify.bat <span class="nv">$START_COMMAND</span> <span class="nv">$START_COMMAND_ARGS</span>"</code></pre>
+</div>
+
+<ul>
+  <li>replace it by the following snippet</li>
+</ul>
+
+<div class="highlight"><pre>
+  <code class="language-sh" data-lang="sh"> <span class="nv">$cloudifyCommand</span> = "cmd.exe /c <span class="nv">$cloudifyDir</span>\tools\cli\cloudify.bat <span class="nv">$START_COMMAND</span> <span class="nv">$START_COMMAND_ARGS</span> &amp;&amp; <span class="nv">$workDirectory</span>\events\bin\gsDeployEventsWar.bat"</code></pre>
+</div>
 
 <p>Bootstrap your cloud, and when done, note the REST API URL (Rest service bellow)</p>
 
